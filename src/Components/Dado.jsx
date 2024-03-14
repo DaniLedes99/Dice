@@ -7,28 +7,38 @@ function Dado({ lados = 6 }) {
   const [cantidadDeTiradas, setCantidadDeTiradas] = useState(0);
   const [historial, setHistorial] = useState([]);
   const [tirando, setTirando] = useState(false);
+  const [degrees, setDegrees] = useState("");
 
   function generateNewTransformValue(nuevoValor) {
-    if (nuevoValor == 3) return `rotateY(90deg) rotateZ(0deg) rotateX(0deg)`;
-    else {
-      return `rotateY(0deg) rotateZ(90deg) rotateX(0deg)`;
+    switch (nuevoValor) {
+      case 1:
+        return `rotateY(0deg) rotateZ(0deg) rotateX(0deg)`;
+      case 2:
+        return `rotateY(90deg) rotateZ(00deg) rotateX(0deg)`;
+      case 3: 
+        return `rotateY(90deg) rotateZ(0deg) rotateX(0deg)`;
+      case 4:
+        return `rotateY(270deg) rotateZ(0deg) rotateX(0deg)`;
+      case 5:
+        return `rotateY(0deg) rotateZ(0deg) rotateX(90deg)`;
+      case 6:
+        return `rotateY(0deg) rotateZ(90deg) rotateX(270deg)`;
+      default:
+        return `rotateY(0deg) rotateZ(00deg) rotateX(0deg)`;
     }
   }
 
   const tirarDado = () => {
     if (!tirando) {
       setTirando(true);
+      setDegrees("")
+      const nuevoValor = Math.floor(Math.random() * lados + 1);
+      const diceRotation = generateNewTransformValue(nuevoValor);
+      setDegrees(diceRotation);
       setTimeout(() => {
-        const nuevoValor = Math.floor(Math.random() * lados + 1);
-        const stylesheet = document.styleSheets[0];
-        const boxParaRule = [...stylesheet.cssRules][3][1];
-
-        const diceRotation = generateNewTransformValue(nuevoValor);
-        boxParaRule.style.setProperty("transform", diceRotation);
-
-        setValor(nuevoValor);
         setCantidadDeTiradas(cantidadDeTiradas + 1);
-
+        setValor(nuevoValor);
+        
         if (cantidadDeTiradas < 10) {
           setHistorial([...historial, nuevoValor]);
           const nuevoContador = [...contador]; // si no pongo los ... no se actualiza el valor
@@ -50,7 +60,7 @@ function Dado({ lados = 6 }) {
   return (
     <div>
       <div className="espacio3D">
-        <div className={`cubo3D ${tirando ? "tirando" : ""}`}>
+        <div style={{transform: degrees}} className={`cubo3D`}>
           <div className={`cara cara1`}>1</div>
           <div className={`cara cara2`}>2</div>
           <div className={`cara cara3`}>3</div>
@@ -63,9 +73,7 @@ function Dado({ lados = 6 }) {
       <button onClick={tirarDado} disabled={tirando}>
         {tirando ? "Lanzando..." : "Tirar dado"}
       </button>
-      <h1>
-        Te salio el numero {valor} eso nos da el siguiente contador:{contador}
-      </h1>
+      {!tirando && (<h1> Te salio el numero {valor} eso nos da el siguiente contador:{contador} </h1>)}
       <h1>
         Cantidad de Tiradas: {cantidadDeTiradas} y tu historial:{historial}
       </h1>
