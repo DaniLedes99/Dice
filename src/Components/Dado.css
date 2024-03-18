@@ -2,9 +2,7 @@
   width: 300px;
   height: 300px;
   margin: 3em auto 0 auto;
-  border: 1px solid rgba(0, 255, 0, 0.5);
   position: relative;
-  /* perspective-origin: center -50%; */
   perspective: 500px;
   transform: scale(0.75) translateZ(-150px);
 }
@@ -18,7 +16,7 @@
 }
 
 .cubo3D.tirando {
-  animation: giro 1s;
+  animation: giro 2s;
 }
 
 @keyframes giro {
@@ -51,6 +49,17 @@ button:disabled {
   /* Frente */
   transform: translateZ(150px);
   background-color: dimgrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  display: block;
+  background-color: black;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
 }
 
 .cara2 {
@@ -59,16 +68,79 @@ button:disabled {
   background-color: brown;
 }
 
+.cara2 span:nth-child(2) {
+  position: absolute;
+  background-color: black;
+  top: calc(2%);
+  left: calc(90%);
+}
+
+.cara2 span:nth-child(1) {
+  position: absolute;
+  background-color: black;
+  top: calc(90%);
+  left: calc(2%);
+}
+
 .cara3 {
   /* Izquierda */
   transform: rotateY(-90deg) translateZ(150px);
   background-color: chocolate;
 }
 
+.cara3 span:nth-child(2) {
+  position: absolute;
+  background-color: black;
+  top: calc(2%);
+  left: calc(90%);
+}
+
+.cara3 span:nth-child(1) {
+  position: absolute;
+  background-color: black;
+  top: calc(90%);
+  left: calc(2%);
+}
+
+.cara3 span:nth-child(3) {
+  position: absolute;
+  background-color: black;
+  top: calc(48%);
+  left: calc(47%);
+}
+
 .cara4 {
   /* derecha */
   transform: rotateY(90deg) translateZ(150px);
-  background-color: blueviolet;
+  background-color: green;
+}
+
+.cara4 span:nth-child(2) {
+  position: absolute;
+  background-color: black;
+  top: calc(2%);
+  left: calc(90%);
+}
+
+.cara4 span:nth-child(1) {
+  position: absolute;
+  background-color: black;
+  top: calc(90%);
+  left: calc(2%);
+}
+
+.cara4 span:nth-child(4) {
+  position: absolute;
+  background-color: black;
+  top: calc(2%);
+  left: calc(2%);
+}
+
+.cara4 span:nth-child(3) {
+  position: absolute;
+  background-color: black;
+  top: calc(90%);
+  left: calc(90%);
 }
 
 .cara5 {
@@ -77,8 +149,83 @@ button:disabled {
   background-color: aqua;
 }
 
+.cara5 span:nth-child(2) {
+  position: absolute;
+  background-color: black;
+  top: calc(2%);
+  left: calc(90%);
+}
+
+.cara5 span:nth-child(1) {
+  position: absolute;
+  background-color: black;
+  top: calc(90%);
+  left: calc(2%);
+}
+
+.cara5 span:nth-child(3) {
+  position: absolute;
+  background-color: black;
+  top: calc(48%);
+  left: calc(47%);
+}
+
+.cara5 span:nth-child(4) {
+  position: absolute;
+  background-color: black;
+  top: calc(2%);
+  left: calc(2%);
+}
+
+.cara5 span:nth-child(5) {
+  position: absolute;
+  background-color: black;
+  top: calc(90%);
+  left: calc(90%);
+}
+
 .cara6 {
   /* arriba */
   transform: rotateX(90deg) translateZ(150px);
   background-color: blue;
+}
+.cara6 span:nth-child(2) {
+  position: absolute;
+  background-color: black;
+  top: calc(2%);
+  left: calc(90%);
+}
+
+.cara6 span:nth-child(1) {
+  position: absolute;
+  background-color: black;
+  top: calc(90%);
+  left: calc(2%);
+}
+
+.cara6 span:nth-child(4) {
+  position: absolute;
+  background-color: black;
+  top: calc(2%);
+  left: calc(2%);
+}
+
+.cara6 span:nth-child(3) {
+  position: absolute;
+  background-color: black;
+  top: calc(90%);
+  left: calc(90%);
+}
+.cara6 span:nth-child(5) {
+  position: absolute;
+  background-color: black;
+  top: calc(48%);
+  left: calc(2%);
+}
+
+.cara6 span:nth-child(6) {
+  position: absolute;
+  background-color: black;
+  top: calc(48%);
+  left: calc(90%);
 }
