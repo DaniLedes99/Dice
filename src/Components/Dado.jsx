@@ -4,6 +4,7 @@ import "./Button.css";
 import "./Text.css";
 import "./Table.css";
 import "./Footer.css";
+import "./Organizador.css";
 
 function Dado({ lados = 6 }) {
   const [valor, setValor] = useState();
@@ -82,74 +83,85 @@ function Dado({ lados = 6 }) {
 
   return (
     <div>
-      <div className="espacio3D">
-        <div style={{ transform: degrees }} className={`cubo3D`}>
-          <div className={`cara cara1`}>
-            <span className="dot"></span>
-          </div>
-          <div className={`cara cara2`}>
-            <span className="dot"></span>
-            <span className="dot"></span>
-          </div>
-          <div className={`cara cara3`}>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
+      <div className={`container ${tirando ? "tirando" : ""}`}>
+        <div className="izquierda">
+          <div className="espacio3D">
+            <div style={{ transform: degrees }} className={`cubo3D`}>
+              <div className={`cara cara1`}>
+                <span className="dot"></span>
+              </div>
+              <div className={`cara cara2`}>
+                <span className="dot"></span>
+                <span className="dot"></span>
+              </div>
+              <div className={`cara cara3`}>
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+              </div>
+
+              <div className={`cara cara4`}>
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+              </div>
+              <div className={`cara cara5`}>
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+              </div>
+              <div className={`cara cara6`}>
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+              </div>
+            </div>
           </div>
 
-          <div className={`cara cara4`}>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-          </div>
-          <div className={`cara cara5`}>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-          </div>
-          <div className={`cara cara6`}>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-            <span className="dot"></span>
-          </div>
+          <button className="button" onClick={tirarDado} disabled={tirando}>
+            {tirando ? "Lanzando..." : "Tirar dado"}
+          </button>
+        </div>
+        <div className="derecha">
+          {!tirando && (
+            <h1 className="textclass">Te salió el numero: {valor}</h1>
+          )}
+          {!tirando && (
+            <h1 className="textclass">
+              Cantidad de Tiradas: {cantidadDeTiradas}
+            </h1>
+          )}
+          {!tirando && (
+            <table className="tableclass">
+              <tbody>
+                <tr className="line-divisor-horizontal">
+                  <td className="line-divisor-right">X</td>
+                  <td className="line-divisor-right">Probabilidades</td>
+                  <td>Cantidad</td>
+                </tr>
+                {contador.map((count, index) => (
+                  <tr key={index + 1}>
+                    <td>{index + 1}</td>
+                    <td className="textclass line-divisor-vertical line-divisor-right">
+                      {((count / cantidadDeTiradas) * 100).toFixed(1)}
+                    </td>
+                    <td>{count}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
 
-      <button className="button" onClick={tirarDado} disabled={tirando}>
-        {tirando ? "Lanzando..." : "Tirar dado"}
-      </button>
-      {!tirando && <h1 className="textclass">Te salió el numero: {valor}</h1>}
-      {!tirando && (
-        <h1 className="textclass">Cantidad de Tiradas: {cantidadDeTiradas}</h1>
-      )}
-
-      <table className="tableclass">
-        <tbody>
-          <tr className="line-divisor-horizontal">
-            <td className="line-divisor-right">X</td>
-            <td className="line-divisor-right">Probabilidades</td>
-            <td>Cantidad</td>
-          </tr>
-          {contador.map((count, index) => (
-            <tr key={index + 1}>
-              <td>{index + 1}</td>
-              <td className="textclass line-divisor-vertical line-divisor-right">
-                {((count / cantidadDeTiradas) * 100).toFixed(1)}
-              </td>
-              <td>{count}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <br />
       <footer className="marquee">
-        <span>Tus últimos números :{" " + historial.join(" ")}</span>
+        <span>Tus últimos números :{" " + historial.join(" - ")}</span>
       </footer>
     </div>
   );

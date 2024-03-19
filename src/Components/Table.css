@@ -1,4 +1,9 @@
 .tableclass {
+  max-width: 100%; /* Ajusta el ancho máximo de la tabla al 100% del contenedor */
+  margin: 0 auto; /* Centra horizontalmente la tabla */
+}
+
+.tableclass {
   color: #e8e8e8;
   border: 1px solid white;
   border-collapse: collapse;

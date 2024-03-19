@@ -1,17 +1,16 @@
-button {
+.button {
   --bg: #e74c3c;
+  margin-top: 10%;
   --text-color: #fff;
-  position: relative;
-  width: 150px;
   border: none;
   background: var(--bg);
   color: var(--text-color);
-  padding: 1em;
+  font-size: medium;
+  padding: 1.5em 5em; /* Ajusta el padding para aumentar el tamaño del botón */
   font-weight: bold;
   text-transform: uppercase;
   transition: 0.2s;
   border-radius: 5px;
-  opacity: 0.8;
   letter-spacing: 1px;
   box-shadow: #c0392b 0px 7px 2px, #000 0px 8px 5px;
 }
