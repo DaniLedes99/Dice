@@ -28,10 +28,6 @@
   }
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
 .cara {
   position: absolute;
   width: 298px;
@@ -60,6 +56,10 @@ button:disabled {
   width: 20px;
   height: 20px;
   border-radius: 50%;
+}
+
+span {
+  padding: 3px;
 }
 
 .cara2 {

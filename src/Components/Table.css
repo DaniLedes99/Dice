@@ -1,0 +1,23 @@
+.tableclass {
+  color: #e8e8e8;
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+.tableclass th,
+.tableclass td {
+  padding: 8px;
+  text-align: center;
+  color: white;
+}
+.line-divisor-horizontal {
+  border-bottom: 1px solid white;
+}
+.line-divisor-vertical {
+  border-left: 1px solid white;
+}
+.line-divisor-right {
+  border-right: 1px solid white;
+}
+.tableclass tr:nth-child(odd) {
+  background-color: #151d21;
+}

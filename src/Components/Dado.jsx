@@ -1,5 +1,9 @@
 import { useState } from "react";
 import "./Dado.css";
+import "./Button.css";
+import "./Text.css";
+import "./Table.css";
+import "./Footer.css";
 
 function Dado({ lados = 6 }) {
   const [valor, setValor] = useState();
@@ -23,7 +27,7 @@ function Dado({ lados = 6 }) {
         case 5:
           return `rotateY(3600deg) rotateZ(3600deg) rotateX(450deg)`;
         case 6:
-          return `rotateY(3600deg) rotateZ(3600deg) rotateX(630deg)`;
+          return `rotateY(3600deg) rotateZ(3600deg) rotateX(6300deg)`;
         default:
           return `rotateY(360deg) rotateZ(360deg) rotateX(360deg)`;
       }
@@ -117,23 +121,36 @@ function Dado({ lados = 6 }) {
         </div>
       </div>
 
-      <button onClick={tirarDado} disabled={tirando}>
+      <button className="button" onClick={tirarDado} disabled={tirando}>
         {tirando ? "Lanzando..." : "Tirar dado"}
       </button>
-      {!tirando && <h1>Te salio el numero {valor}</h1>}
+      {!tirando && <h1 className="textclass">Te salió el numero: {valor}</h1>}
       {!tirando && (
-        <h1>
-          Cantidad de Tiradas: {cantidadDeTiradas} y tus últimos números fueron:
-          {historial.join(" ")}
-        </h1>
+        <h1 className="textclass">Cantidad de Tiradas: {cantidadDeTiradas}</h1>
       )}
-      <ul>
-        {contador.map((count, index) => (
-          <li key={index + 1}>
-            Cantidad de {index + 1} tirados: {count}
-          </li>
-        ))}
-      </ul>
+
+      <table className="tableclass">
+        <tbody>
+          <tr className="line-divisor-horizontal">
+            <td className="line-divisor-right">X</td>
+            <td className="line-divisor-right">Probabilidades</td>
+            <td>Cantidad</td>
+          </tr>
+          {contador.map((count, index) => (
+            <tr key={index + 1}>
+              <td>{index + 1}</td>
+              <td className="textclass line-divisor-vertical line-divisor-right">
+                {((count / cantidadDeTiradas) * 100).toFixed(1)}
+              </td>
+              <td>{count}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <br />
+      <footer className="marquee">
+        <span>Tus últimos números :{" " + historial.join(" ")}</span>
+      </footer>
     </div>
   );
 }

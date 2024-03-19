@@ -1,0 +1,24 @@
+ <table className="textclass">
+        <tr>
+          <th></th>
+          {contador.map((count, index) => (
+            <th key={index + 1}>{index + 1}</th>
+          ))}
+        </tr>
+        <tr>
+          <td>Veces que salió:</td>
+          {contador.map((count, index) => (
+            <td key={index + 1} className="textclass">
+              {count}
+            </td>
+          ))}
+        </tr>
+      </table>
+
+       <ul>
+        {contador.map((count, index) => (
+          <li key={index + 1} className="textclass">
+            Cantidad de {index + 1} tirados: {count}
+          </li>
+        ))}
+      </ul>

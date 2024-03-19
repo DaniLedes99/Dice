@@ -5,6 +5,72 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   padding: 0.5rem;
-  background-color: darkslategrey;
+  background-color: #0c1317;
+}
+
+header {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+:root,
+header {
+  color: #fff;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+}
+
+header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.headerclass {
+  background: 50% 100%/50% 50% no-repeat
+    radial-gradient(ellipse at bottom, #fff, transparent, transparent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 2vw;
+  font-family: "Source Sans Pro", sans-serif;
+  -webkit-animation: reveal 3000ms ease-in-out forwards 200ms,
+    glow 2500ms linear infinite 2000ms;
+  animation: reveal 3000ms ease-in-out forwards 200ms,
+    glow 2500ms linear infinite 2000ms;
+}
+@-webkit-keyframes reveal {
+  80% {
+    letter-spacing: 8px;
+  }
+  100% {
+    background-size: 300% 300%;
+  }
+}
+@keyframes reveal {
+  80% {
+    letter-spacing: 8px;
+  }
+  100% {
+    background-size: 300% 300%;
+  }
+}
+@-webkit-keyframes glow {
+  40% {
+    text-shadow: 0 0 8px #fff;
+  }
+}
+@keyframes glow {
+  40% {
+    text-shadow: 0 0 8px #fff;
+  }
 }
