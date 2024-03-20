@@ -32,6 +32,20 @@ function Dado({ lados = 6 }) {
     setDegrees,
   });
 
+  //TODO: Syntax de HTML, como esta es tu pantalla principal, podes reemplazar el div de mas arriba por main o article, los hijos de los articles son de 3 tipos: header, section y footer.
+  /*
+    En este caso: 
+    main
+      - article
+        - section
+          - div
+          .
+          .
+          .
+        - section
+          -table
+      - footer
+  */
   return (
     <div>
       <div className={`container ${tirando ? "tirando" : ""}`}>
@@ -42,6 +56,7 @@ function Dado({ lados = 6 }) {
         <div className="derecha textclass">
           {!tirando && <h1>Te salió el numero: {valor}</h1>}
           {!tirando && <h1>Cantidad de Tiradas: {cantidadDeTiradas}</h1>}
+          {/* TODO: La tabla podria mostrarse mientras se sigue tirando el dado, es mas estetico el cambio que otra cosa */}
           {!tirando && (
             <Table contador={contador} cantidadDeTiradas={cantidadDeTiradas} />
           )}

@@ -1,5 +1,11 @@
 import "./Dado.css";
 
+/*
+  TODO: 
+    - Cada lado tendria que se su propio componente, que reciba el angulo de giro, color y cantidad de puntos, y encargarse de generar todo eso.
+
+*/
+
 function Dado3D({ degrees }) {
   return (
     <div className="espacio3D">
